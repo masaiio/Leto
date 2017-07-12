@@ -4,7 +4,7 @@ const Discord = require("discord.js");
 const { promisify } = require('util');
 const readdir = promisify(require("fs").readdir);
 
-// Load? client.
+// Load the client?
 const client = new Discord.Client();
 
 //Load the config.json file that contains bot token and prefix values. 
