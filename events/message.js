@@ -3,21 +3,20 @@
 // goes `client, other, args` when this function is run.
 
 module.exports = (client, message) => {
-  // ignore other bots. This also makes your bot ignore itself
+  //Ignore other bots. This also makes bot ignore itself
   if(message.author.bot) return;
   
-  //ignore any message that does not start with our prefix, 
-  // which is set in the configuration file.
+  //Ignore any message that does not start with assigned prefix. set in config
   if(message.content.indexOf(client.config.prefix) !== 0) return;
 
-  // Here we separate our "command" name, and our "arguments" for the command. 
+  //Separate "command" name, and "arguments" for the command. 
   // e.g. if we have the message "+say Is this the real life?" , we'll get the following:
   // command = say
   // args = ["Is", "this", "the", "real", "life?"]
   const args = message.content.split(/\s+/g);
   const command = args.shift().slice(client.config.prefix.length).toLowerCase();
 
-  // Get the user or member's permission level from the elevation
+  // Get the user or member's permission level from the elevation.
   let perms = client.permlevel(message);
   
   // Check whether the command, or alias, exist in the collections defined
