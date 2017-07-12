@@ -1,27 +1,25 @@
 // Load up the discord.js library
 const Discord = require("discord.js");
-// We also load the rest of the things we need in this file:
+// Load the rest of the things we need in this file:
 const { promisify } = require('util');
 const readdir = promisify(require("fs").readdir);
 
-// This is client.
+// Load? client.
 const client = new Discord.Client();
 
-// Here we load the config.json file that contains our token and our prefix values. 
+//Load the config.json file that contains bot token and prefix values. 
 client.config = require("./config.json");
 // client.config.token contains the bot's token
 // client.config.prefix contains the message prefix
 
-//  useful functions used throughout the bot, like logs and elevation features.
+// Useful functions used throughout the bot, like logs and elevation features.
 require("./modules/functions.js")(client);
 
-// Aliases and commands are put in collections where they can be read from,
-// catalogued, listed, etc.
+// Commands and aliases are put in collections where they can be read from, catalogued, listed, etc.
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
-// We're doing real fancy node 8 async/await stuff here, and to do that
-// we need to wrap stuff in an anonymous function. It's annoying but it works.
+//Fancy node 8 async/await setup, requires in an anonymous function.
 (async function() {
 
   //load **commands** into memory, as a collection, so they're accessible here and everywhere. 
