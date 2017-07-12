@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eslachance/discordjs-command-handler.git"
+    "url": "git+https://github.com/masaiio/Leto.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/eslachance/discordjs-command-handler/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/eslachance/discordjs-command-handler#readme",
+  "homepage": "",
   "dependencies": {
     "discord.js": "^11.1.0"
   }

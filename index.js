@@ -4,19 +4,15 @@ const Discord = require("discord.js");
 const { promisify } = require('util');
 const readdir = promisify(require("fs").readdir);
 
-// This is your client. Some people call it `bot`, some people call it `self`, 
-// some might call it `cootchie`. Either way, when you see `client.something`, 
-// or `bot.something`, this is what we're refering to. Your client.
+// This is client.
 const client = new Discord.Client();
-
 
 // Here we load the config.json file that contains our token and our prefix values. 
 client.config = require("./config.json");
 // client.config.token contains the bot's token
 // client.config.prefix contains the message prefix
 
-// Let's start by getting some useful functions that we'll use throughout
-// the bot, like logs and elevation features.
+//  useful functions used throughout the bot, like logs and elevation features.
 require("./modules/functions.js")(client);
 
 // Aliases and commands are put in collections where they can be read from,
@@ -26,11 +22,9 @@ client.aliases = new Discord.Collection();
 
 // We're doing real fancy node 8 async/await stuff here, and to do that
 // we need to wrap stuff in an anonymous function. It's annoying but it works.
-
 (async function() {
 
-  // Here we load **commands** into memory, as a collection, so they're accessible
-  // here and everywhere else. 
+  //load **commands** into memory, as a collection, so they're accessible here and everywhere. 
   const cmdFiles = await readdir('./commands/');
   client.log("log", `Loading a total of ${cmdFiles.length} commands.`);
   cmdFiles.forEach(f => {
@@ -46,7 +40,7 @@ client.aliases = new Discord.Collection();
     }
   });
 
-  // Then we load events, which will include our message and ready event.
+  //load events, which will include our message and ready event.
   const evtFiles = await readdir('./events/');
   client.log("log", `Loading a total of ${evtFiles.length} events.`);
   evtFiles.forEach(file => {
@@ -57,8 +51,7 @@ client.aliases = new Discord.Collection();
     delete require.cache[require.resolve(`./events/${file}`)];
   });
 
-
-  // Here we login the client.
+  //login the client.
   client.login(client.config.token);
 
 // End top-level async/await function.  
