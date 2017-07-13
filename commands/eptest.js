@@ -3,7 +3,7 @@ exports.run = async (client, msg, args) => {
   client.log("debug", "value: " + args[0]);
   //check if args a defined value
   if(args[0] == undefined) {
-    return msg.reply(`Must provide a Skill Value. Integer 0-99`);
+    return msg.reply("Must provide a Skill Value. Integer 0-99");
   };
   // check if arg has only one defined value
   if(args[1] != undefined) {
@@ -16,7 +16,7 @@ exports.run = async (client, msg, args) => {
   }
   //check if arg is in range 
   if(check < 0 || check > 99) {
-    return msg.reply('Must provide integer 0-99');
+    return msg.reply("Must provide integer 0-99");
   };
   //place initial statement
   const m = await msg.channel.send("Calcuating...");
@@ -40,7 +40,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: 'eptest',
-  description: 'Makes a simple test for Eclipse Phase',
-  usage: 'eptest [Integer 0-99]'
+  name: "eptest",
+  description: "Makes a simple test for Eclipse Phase",
+  usage: "eptest [Integer 0-99]"
 };
