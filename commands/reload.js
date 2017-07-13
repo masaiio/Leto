@@ -1,4 +1,5 @@
 exports.run = async (client, msg, args) => {
+  client.log("log", "size: " + args.size)
   if(!args || args.size < 1) return msg.reply(`Must provide a command to reload. Derp.`);
 
   let command;
